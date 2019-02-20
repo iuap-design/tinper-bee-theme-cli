@@ -1,33 +1,31 @@
-# ac-tools
+# tinper-bee-theme-cli
 
 
 ## 介绍
 
-是一款编写应用组件的开发工具 [应用组件](https://github.com/tinper-acs) 执行远程代码访问、基本组件开发构建、demo示例的生成等自动化工具。
-
+结合tinper-bee实现主题定制功能的cli工具。
 
 ## 安装
 
 ```bash
-$ ynpm install ac-tools -g 或者 (npm install ac-tools -g )
+$ npm install tinper-theme -g 或者 (npm install tinper-theme -g )
 
 $ mkdir app && cd app
 
-$ ac-tools init
+$ tinper-theme init
 ```
  
 > 稍等片刻安装结束后，输入下面命令来确定是否安装成功：
 
 ```bash
-$ ac-tools
+$ tinper-theme
 
   Usage :
 
-  1. ac-tools init           Generate best application component project
-  2. ac-tools h              Help
-  3. ac-tools v              Version
-  4. ac-tools sample         Producing example Engineering
-  5. ac-tools md             README.md documents are translated into HTML to be published on git IO
+  1. tinper-theme init           themeColor.json file has been created, please modify the theme file
+  2. tinper-theme h              Help
+  3. tinper-theme v              Version
+  4. tinper-theme build         build tinper scss file
 
 ```
 OK,到此成功。
@@ -35,32 +33,19 @@ OK,到此成功。
 
 ## 使用
 
-1. 如何使用前端集成工具`ac-tools`来快速创建一个应用组件：
-
 ```bash
-$ cd app
+$ mkdir && cd theme
 
-$ ac-tools init
+$ tinper-theme init
 ```
 
-[初始化生成的模版文件对应的文档链接](https://github.com/tinper-acs/app-component-templ)
+会在当前目录下生成一个themeColor.json文件，然后修改各项色值(变量注解如下)，并且保存。
 
-2. Start development server.
-```bash
-$ npm run dev
-```
-3. After writing a good example.
-```bash
-$ ac-tools sample
-```
-4. Build io demo page. 
-```bash
-$ npm run deploy
-```
-5. After writing README.md documents.And push to io page
-```bash
-$ ac-tools md
-```
+$ tinper-theme build
+
+  会提示你输入版本号，回车 等待一段时间后，会出现打包后的css的连接(目前css文件会托管到cdn上)通过连接下载。
+  
+>目前只有tinper-bee@1.6.10以上的版本才支持主题定制。
 
 ## api
 
@@ -71,63 +56,32 @@ $ ac-tools md
 
 | # | Scripts 脚本命令 | Description 功能描述 |
 | --- | --- | --- |
-| 1 | ac-tools h | api 查询 |
-| 2 | ac-tools v | 版本查询 |
-| 3 | ac-tools init | 下载模板项目|
-| 4 | ac-tools sample | 编写demo时，需要生成示例代码 |
-| 5 | ac-tools md | README.md文档转化成html发布到git io上 |
-| 6 | ac-tools cdn | 将需要上传cdn的文件上传到cdn |
+| 1 | tinper-theme h | api 查询 |
+| 2 | tinper-theme v | 版本查询 |
+| 3 | tinper-theme init | 生成主题自定的必要文件|
+| 4 | tinper-theme build | 打包编译生成自定义的css文件 |
 
-## 其他
+## tinper-bee 主题样式文件注解(themeColor.json)
 
-### ynpm[推荐使用]
+```css
 
-公司内网通过使用`ynpm`,实现快速下载包，减少下载等待时间。详情请 [点击](https://github.com/iuap-design/ynpm-tool)
+/* 全局样式 */
+$default-color               // 默认色
+$primary-color               // 主题色
+$font-family-primary         // 字体
+$font-size-base              // 字号
+$text-color-base             // 字体颜色
+$border-color                // 边框色
+$item-hover-bg-color-base    //条目hover背景色
+$item-selected-bg-color-base //条目selected背景色
 
-```bash
+/* 按钮细化样式 */
+$secondary-color                 // 次按钮背景色
+$button-secondary-text-color     // 次按钮字体色
 
-$ ynpm install ac-tools -g               # 安装 ac-tools 速度飞快在内网下
-```
-
-### cnpm
-
-你可以使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:
-```bash
-$ npm install -g cnpm --registry=https://registry.npm.taobao.org
-
-$ cnpm install ac-tools -g
-```
-
-### ac-tools cdn
-
-> 例如 在文件根目录下创建`oss.config.json`
-
-对应的关键字含义
-
-| key | 对应含义 | 是否必填 |
-| --- | --- | --- |
-| accessKeyId | oss账号id | 是 |
-| accessKeySecret | oss账号secret | 是 |
-| bucket | oss初始化放置目录 | 是|
-| region | cdn的地区 | 是 |
-| pushDirName | 上传文件的目录(相对路径) | 否，默认选择dist文件夹 |
-| osspath | 上传文件生成url中path路径 | 否，默认为空 |
-| exclude | 上传文件的目录中不用上传的文件名称 | 否，默认为空 |
-
+/*表格细化样式*/
+$table-header-background-color   // 表头背景色
+$table-header-text-color         // 表头文字颜色
+$table-border-color-base         // 表格分割线颜色
 
 ```
-{
-  "ossconfig": {
-    "accessKeyId": "L1a2b3c4b5d6e7f",
-    "accessKeySecret": "WFsdFkkLslK8KNHsHHKKjjhh",
-    "bucket": "iuap-tenat-market",
-    "region": "oss-cn-beijing"
-  },
-  "pushDirName":"dist",
-  "osspath":"yonyou-fed",
-  "exclude":["index.html",'html/index.html']
-}
-```
-
-运行ac-tools cdn 生成cdn路径为：`http://iuap-tenat-market.oss-cn-beijing.aliyuncs.com/yonyou-fed`
-
