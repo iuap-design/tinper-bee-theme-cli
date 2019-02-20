@@ -1,0 +1,42 @@
+{
+  "name": "tinper-bee-theme-cli",
+  "version": "0.0.1",
+  "preferGlobal": true,
+  "description": "主题定制cli工具",
+  "main": "index.js",
+  "bin": {
+    "tinper-theme": "./bin/tinper-bee-theme.js"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinper-acs/ac-tools.git"
+  },
+  "keywords": [
+    "ac-tools",
+    "init web"
+  ],
+  "author": "yueming@yonyou.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tinper-acs/ac-tools/issues"
+  },
+  "homepage": "https://github.com/tinper-acs/ac-tools",
+  "dependencies": {
+    "ali-oss": "^6.0.1",
+    "chalk": "^1.1.3",
+    "cross-spawn": "^6.0.5",
+    "download-git-repo": "^1.0.2",
+    "gh-pages": "^1.1.0",
+    "inquirer": "^3.3.0",
+    "markdown-styles": "^3.1.10",
+    "minimist": "^1.2.0",
+    "node-fetch": "^2.3.0",
+    "ora": "^3.1.0",
+    "path-exists": "^3.0.0",
+    "properties-parser": "^0.3.1",
+    "request": "^2.81.0"
+  }
+}
