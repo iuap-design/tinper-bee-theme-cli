@@ -7,7 +7,8 @@ const download = require('download-git-repo');
 const spawn = require('cross-spawn');
 const help = require('./help');
 
-const _server = "http://localhost:3000";
+// const _server = "http://localhost:3001";
+const _server = "http://tinper-bee-theme-server.online.app.yyuap.com";
 
 let _defaultThemeColor = {
 
@@ -93,7 +94,7 @@ async function updateAll(){
     }];
     let quirerObj = await inquirer.prompt(questions);
     let dataList = String(quirerObj.version).split(",");
-    fetch(_server+'/api/updateAll',{
+    fetch(_server+'/server/updateAll',{
         method: 'post',
         body:    JSON.stringify(dataList),
         headers: { 'Content-Type': 'application/json' },
@@ -137,7 +138,7 @@ async function build(){
     let _theme = fs.readFileSync("themeColor.json",'utf-8');
     let quirerObj = await inquirer.prompt(questions);
     const spinner1 = ora('tinper-bee building ...').start()
-    fetch(_server+'/api/package',{
+    fetch(_server+'/server/package',{
         method: 'post',
         body:  JSON.stringify({"theme":JSON.parse(_theme),"version":quirerObj.version}),
         headers: { 'Content-Type': 'application/json' },
