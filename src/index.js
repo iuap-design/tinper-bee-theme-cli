@@ -64,7 +64,6 @@ module.exports = {
             build();
             break;
         case "update":
-            console.log(chalk.green(" updateing... "));
             updateAll();
             break; 
         default:
@@ -84,15 +83,28 @@ function fsExistsSync(path) {
 }
 
 async function updateAll(){
-    let dataList = {version:["1.6.10"]};
+    let questions = [{
+        type: 'input',
+        name: 'version',
+        message: 'input number version ?',
+        default: function() {
+            return 'multiple version > 1.6.10'
+        }
+    }];
+    let quirerObj = await inquirer.prompt(questions);
+    let dataList = String(quirerObj.version).split(",");
     fetch(_server+'/api/updateAll',{
         method: 'post',
         body:    JSON.stringify(dataList),
         headers: { 'Content-Type': 'application/json' },
     })
     .then(res => res.json())
-    .then(json => { 
-        console.log("The server is in process ...");
+    .then(json => {
+        if(json.success){
+            console.log(chalk.green(" 💯  tinperp-bee v "+quirerObj.version+" in server , Please execute tinper-theme init !"));
+        }else{
+            console.log(chalk.green(" 💯  tinperp-bee v "+quirerObj.version+" in server is not defind , The server is updating..."));
+        }
     });
 }
 
@@ -127,16 +139,21 @@ async function build(){
     const spinner1 = ora('tinper-bee building ...').start()
     fetch(_server+'/api/package',{
         method: 'post',
-        body:    JSON.stringify({"theme":JSON.parse(_theme),"version":quirerObj.version}),
+        body:  JSON.stringify({"theme":JSON.parse(_theme),"version":quirerObj.version}),
         headers: { 'Content-Type': 'application/json' },
     })
     .then(res => res.json())
     .then(json => {
-        spinner1.succeed('😁 , tinper-bee theme build success ! ')
-        console.log(chalk.green("Visit "+json.data.url+" to verify your customized theme !"));
-        let {name,url} = json.data;
-        help.themeBuildHelp(quirerObj.version,url);
-        getReviewComponent(quirerObj.version,name);
+        if(!json.success){
+            console.log();
+            spinner1.fail(chalk.green(json.message));
+        }else{
+            spinner1.succeed('😁 , tinper-bee theme build success ! ')
+            console.log(chalk.green("Visit "+json.data.url+" to verify your customized theme !"));
+            let {name,url} = json.data;
+            help.themeBuildHelp(quirerObj.version,url);
+            getReviewComponent(quirerObj.version,name);
+        }
     });
 }
 

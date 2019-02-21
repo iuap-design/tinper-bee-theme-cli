@@ -20,7 +20,7 @@ module.exports = {
         console.log();
         process.exit();
     },
-    themeBuildHelp: () => {
+    themeBuildHelp: (version,url) => {
         console.log();
         console.log(chalk.green(" ***********************👀👀👀************************ "));
         console.log();
@@ -33,7 +33,7 @@ module.exports = {
         console.log(chalk.green(" ***********************👀👀👀************************ "));
         console.log();
     },
-    themeColorCont: () => {
+    themeColorCont: (_data) => {
         console.log(chalk.green(" ***********************👀👀👀************************ "));
         console.log();
         console.log(chalk.green("1. themeColor.json file has been created, please modify the theme file! "));
