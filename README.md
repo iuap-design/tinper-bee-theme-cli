@@ -8,7 +8,7 @@
 ## 安装
 
 ```bash
-$ npm install tinper-theme -g 或者 (npm install tinper-theme -g )
+$ npm install tinper-bee-theme-cli -g 或者 (npm install tinper-theme -g )
 
 $ mkdir app && cd app
 
