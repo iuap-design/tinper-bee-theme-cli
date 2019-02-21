@@ -12,18 +12,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tinper-acs/ac-tools.git"
+    "url": "git+https://github.com/iuap-design/tinper-bee-theme-cli.git"
   },
   "keywords": [
-    "ac-tools",
-    "init web"
+    "tinper-bee-theme-cli",
+    "theme",
+    "tinper-bee cli"
   ],
   "author": "yueming@yonyou.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tinper-acs/ac-tools/issues"
+    "url": "https://github.com/iuap-design/tinper-bee-theme-cli/issues"
   },
-  "homepage": "https://github.com/tinper-acs/ac-tools",
+  "homepage": "https://github.com/iuap-design/tinper-bee-theme-cli",
   "dependencies": {
     "ali-oss": "^6.0.1",
     "chalk": "^1.1.3",
