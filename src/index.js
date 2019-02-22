@@ -96,7 +96,7 @@ async function updateAll(){
     let dataList = String(quirerObj.version).split(",");
     fetch(_server+'/server/updateAll',{
         method: 'post',
-        body:    JSON.stringify(dataList),
+        body:    JSON.stringify({version:dataList}),
         headers: { 'Content-Type': 'application/json' },
     })
     .then(res => res.json())
