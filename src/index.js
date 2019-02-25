@@ -7,8 +7,8 @@ const download = require('download-git-repo');
 const spawn = require('cross-spawn');
 const help = require('./help');
 
-// const _server = "http://localhost:3001";
-const _server = "http://tinper-bee-theme-server.online.app.yyuap.com";
+const _server = "http://localhost:3001";
+// const _server = "http://tinper-bee-theme-server.online.app.yyuap.com";
 
 let _defaultThemeColor = {
 
@@ -131,7 +131,7 @@ async function build(){
         name: 'version',
         message: 'input number version ?',
         default: function() {
-            return 'tinper-bee version > 1.6.10'
+            return 'tinper-bee version > 2.0.0'
         }
     }];
     // let _theme = await getThemeColor();
@@ -207,7 +207,7 @@ async function getDownload(){
               let args = ['install'].filter(function(e) {
                   return e;
               });
-              let proc = spawn('ynpm', args, {
+              let proc = spawn('npm', args, {
                 stdio: 'inherit'
               });
               proc.on('close', function(code) {
