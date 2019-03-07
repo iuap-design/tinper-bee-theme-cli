@@ -19,14 +19,6 @@ let _defaultThemeColor = {
     "default-color": "30,136,229,255",
     "default-color-dark": "21,101,192,255",
     "default-color-light": "66,165,245,255",
-
-    // Table 细化样式变量：
-    // 表头背景色
-    "table-header-background-color": "247,247,247",
-    // 表头文字颜色
-    "table-header-text-color": "102, 102, 102",
-    // 表格分割线颜色
-    "table-border-color-base": "233,233,233",
 }
 
 let _ThemeColorAll = {
@@ -39,6 +31,8 @@ let _ThemeColorAll = {
     "text-color-base": "66,66,66,255",
 
     "border-color": "30,136,229,255",
+    "border-radius": "3",
+
     "item-hover-bg-color-base": "231,244,253,255",
     "item-selected-bg-color-base": "231,244,253,255",
 
@@ -46,6 +40,15 @@ let _ThemeColorAll = {
     "secondary-color-dark": "189,189,189,255",
     "secondary-color-light": "238,238,238,255",
     "button-secondary-text-color": "66,66,66,255",
+
+     // Table 细化样式变量：
+    // 表头背景色
+    "table-header-background-color": "247,247,247",
+    // 表头文字颜色
+    "table-header-text-color": "102, 102, 102",
+    // 表格分割线颜色
+    "table-border-color-base": "233,233,233",
+    "table-row-hover-bg-color":"235, 236, 240"
   }
 
 module.exports = {
