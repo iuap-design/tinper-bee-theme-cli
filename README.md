@@ -57,7 +57,7 @@ $ tinper-theme relation-all
 | 2 | tinper-theme v | 版本查询 |
 | 3 | tinper-theme init | 生成主题自定的必要文件|
 | 4 | tinper-theme build | 打包编译生成自定义的css文件 |
-| 5 | tinper-theme relation |【需要进入tinper-bee跟目录】输入单个包，查询该包的依赖关系 |
+| 5 | tinper-theme relation |【需要进入tinper-bee跟目录】输入单个包，分析该包的组件相互依赖关系 |
 | 6 | tinper-theme relation-all |【需要进入tinper-bee跟目录】查询tinper-bee下，所有的包的依赖关系 |
 
 ## help
