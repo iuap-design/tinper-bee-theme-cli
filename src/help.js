@@ -12,6 +12,8 @@ module.exports = {
         console.log(chalk.green('2. ac-tinper-theme h              Help'));
         console.log(chalk.green('3. ac-tinper-theme v              Version'));
         console.log(chalk.green('4. tinper-theme build       build tinper scss file '));
+        console.log(chalk.green('5. tinper-theme relation       Analysis of individual component dependencies of tinper-bee'));
+        console.log(chalk.green('6. tinper-theme relation-all   Analysis of all component dependencies of tinper-bee '));
         console.log();
     },
     version: () => {

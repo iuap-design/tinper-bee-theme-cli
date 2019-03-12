@@ -6,6 +6,7 @@ const inquirer = require('inquirer');
 const download = require('download-git-repo');
 const spawn = require('cross-spawn');
 const help = require('./help');
+const relationComponent = require('./relation-component');
 
 // const _server = "http://localhost:3001";
 const _server = "http://tinper-bee-theme-server.online.app.yyuap.com";
@@ -69,7 +70,13 @@ module.exports = {
             break;
         case "update":
             updateAll();
-            break; 
+            break;
+        case "relation":
+            relationComponent();
+            break;
+        case "relation-all":
+            relationComponent("all");
+            break;
         default:
             help.help();
     }

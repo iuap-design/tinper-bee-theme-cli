@@ -30,6 +30,18 @@ $ tinper-theme build
 > 目前只有tinper-bee@2.0.0以上的版本才支持主题定制。
 > 稍等片刻安装结束后，会输出CDN地址为打包成功！
 
+分析组件依赖关系命令
+
+>需要进入tinper-bee跟目录
+
+$ tinper-theme relation
+
+> 单个组件依赖
+
+$ tinper-theme relation-all
+
+> 全部组件依赖
+
 ```
 
 ## api
@@ -45,6 +57,8 @@ $ tinper-theme build
 | 2 | tinper-theme v | 版本查询 |
 | 3 | tinper-theme init | 生成主题自定的必要文件|
 | 4 | tinper-theme build | 打包编译生成自定义的css文件 |
+| 5 | tinper-theme relation |【需要进入tinper-bee跟目录】输入单个包，查询该包的依赖关系 |
+| 6 | tinper-theme relation-all |【需要进入tinper-bee跟目录】查询tinper-bee下，所有的包的依赖关系 |
 
 ## help
  
