@@ -38,14 +38,15 @@ module.exports  = async (options) => {
     }
 }
 
-function getTinperBeeComp(_package,name){
-    console.log(" ========== "+name+" ========= ");
+async function getTinperBeeComp(_package,name){
+    let _packJson = await getFindPackage(name);
+    console.log(" ========== "+name+ " v "+ _packJson.version + " ========= ");
     console.log("");
     let comps ={},i =0,allList = {};
     for (let key in _package.pack) {
         if(key.indexOf("bee-") !== -1){
             i++;
-            let allCom = getFindRalationObject(key,name);
+            let allCom = await getFindRalationObject(key,name);
             if(allCom){
                 allList = {[allCom["name"]]:allCom["version"],...allCom["pack"]};
                 console.log("    ",allList);
@@ -59,24 +60,30 @@ function getTinperBeeComp(_package,name){
     console.log("");
 }
 
-function getFindRalationObject(name,id){
+async function getFindRalationObject(name,id){
     let _path = process.cwd()+"/node_modules/"+name;
     if(!fsExistsSync(_path)){
         console.log(chalk.red(" 🚫  "+name+" is not defined "));
         return null;
     }
-    let _theme = fs.readFileSync(_path+"/package.json",'utf-8');
+    let _theme = await getFindPackage(name);//fs.readFileSync(_path+"/package.json",'utf-8');
     let allCom = getFindComponent(getAllComponent(_theme),id);
     return allCom;
 }
 
 function getAllComponent(_package){
-    let _pack = JSON.parse(_package); 
+    let _pack = _package;
+    if(typeof _package === "string"){
+        _pack = JSON.parse(_package); 
+    }else{
+        _pack = _package;
+    }
     return {name:_pack.name,version:_pack.version,pack:{..._pack.devDependencies,..._pack.peerDependencies,..._pack.dependencies}};
 }
 
 function getFindComponent(_package,id){
     let comps = {..._package},i =0;
+    
     comps["pack"] = null;
     for (const key in _package.pack) {
 
@@ -86,10 +93,7 @@ function getFindComponent(_package,id){
             comps["pack"] = {[id]:_package.pack[key]};
         } 
     }
-    // console.log(" --comps--- ",comps);
-    // console.log(i+" --_package--- ",_package.name);
     return i==0?null:comps;
-    // return comps;
 }
 //检测文件或者文件夹存在 nodeJS
 function fsExistsSync(path) {
@@ -99,4 +103,14 @@ function fsExistsSync(path) {
         return false;
     }
     return true;
+}
+
+async function getFindPackage(comp){
+    let _path = tinperPath+"/node_modules/"+comp+"/package.json";
+    var _package = await fs.readFileSync(path.join(_path),'utf-8');
+    if(!_package){
+        console.log(comp+" path is error ,please go to tinper-bee directory to execute this command !");
+        return null;
+    }
+    return JSON.parse(_package);
 }
