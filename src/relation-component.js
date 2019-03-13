@@ -28,7 +28,7 @@ module.exports  = async (options) => {
         for (const key in allCom["pack"]) {
             if(key.indexOf("bee-") !== -1){
                 i++;
-                getTinperBeeComp(allCom,key);
+                await getTinperBeeComp(allCom,key);
             }
         }
     }else{
