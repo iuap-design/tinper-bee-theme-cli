@@ -1,6 +1,6 @@
 {
   "name": "tinper-bee-theme-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "preferGlobal": true,
   "description": "主题定制cli工具，以及组件库依赖分析",
   "main": "index.js",
