@@ -1,6 +1,6 @@
 {
   "name": "tinper-bee-theme-cli",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "preferGlobal": true,
   "description": "主题定制cli工具，以及组件库依赖分析",
   "main": "index.js",
@@ -19,7 +19,7 @@
     "theme",
     "tinper-bee cli"
   ],
-  "author": "yueming@yonyou.com",
+  "author": "wangshih@yonyou.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/iuap-design/tinper-bee-theme-cli/issues"
@@ -28,6 +28,7 @@
   "dependencies": {
     "ali-oss": "^6.0.1",
     "chalk": "^1.1.3",
+    "colors": "^1.3.3",
     "cross-spawn": "^6.0.5",
     "download-git-repo": "^1.0.2",
     "gh-pages": "^1.1.0",

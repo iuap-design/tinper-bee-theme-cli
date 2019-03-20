@@ -48,6 +48,14 @@ module.exports = {
         console.log(chalk.green(" ***********************👀👀👀************************ "));
         console.log();
     },
+    themeColorPrefix: (_data) => {
+        console.log(chalk.green(" ***********************👀👀👀************************ "));
+        console.log();
+        console.log(chalk.green(" Generated, see tinper-bee-prefix.css file  "));
+        console.log();
+        console.log(chalk.green(" ***********************👀👀👀************************ "));
+        console.log();
+    },
     error: (msg) => {
         // console.log();
         console.log(chalk.red("Error : " + msg));
