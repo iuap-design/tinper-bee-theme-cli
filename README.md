@@ -44,7 +44,43 @@ $ tinper-theme relation-all
 
 ```
 
-## api
+## 组件库提供向上兼容模式
+
+在入口处，引入样式：
+
+```js
+import 'tinper-bee/assets/tinper-bee-default.css';
+
+```
+
+CDN引入：
+
+```js
+
+<script src="//design.yonyoucloud.com/static/tinper-bee/latest/assets/tinper-bee-default"></script>
+```
+
+即可兼容1.x的版本(蓝色风格)
+
+## 组件库提供向上兼容模式，增加前缀。
+
+
+```js
+# tinper-theme build
+```
+
+```js
+  Please choose ? (Use arrow keys)
+?   tinper-bee-default.css
+    custom tinper-bee.css
+
+```
+
+1. tinper-bee-default.css 默认为蓝色，并且给当前的样式前，加入前缀，兼容之前老版本的tinper-bee.css 样式(默认)
+2. custom tinper-bee.css  为自定义主题打包。
+
+
+## 命令大全
 
 
 项目根目录，使用以下命令完成对应功能。

@@ -108,7 +108,7 @@ async function buildCustom(){
         headers: { 'Content-Type': 'application/json' },
     })
     .then(res => res.json())
-    .then(json => {
+    .then(async json => {
         if(!json.success){
             console.log();
             spinner1.fail(chalk.green(json.message));
@@ -116,6 +116,7 @@ async function buildCustom(){
             spinner1.succeed('😁 , tinper-bee theme build success ! ')
             console.log(chalk.green("Visit "+json.data.url+" to verify your customized theme !"));
             let {name,url} = json.data;
+            fs.writeFileSync("tinper-bee.css",await writeUrlFileSync(url), { encoding: 'utf8' });
             help.themeBuildHelp(quirerObj.version,url);
             getReviewComponent(quirerObj.version,name);
         }
@@ -220,12 +221,20 @@ async function buildDefault(){
         message: 'Please prefix the input style ?'
     }];
     let quirerObj = await inquirer.prompt(questions);
-    let prefix = String(quirerObj.prefix).split(",");
-    fetch(_tinper_bee_default_url)
+    let prefix = String(quirerObj.prefix);
+    fs.writeFileSync("tinper-bee-prefix.css","."+prefix+"{" + await writeUrlFileSync(_tinper_bee_default_url) +  "}", { encoding: 'utf8' });
+    help.themeColorPrefix();
+}
+
+/**
+ * 通过url获取文件内容
+ * @param {*} url 
+ */
+async function writeUrlFileSync(url){
+    return fetch(url)
     .then(res => res.text())
     .then(body => {
-        fs.writeFileSync("tinper-bee-prefix.css","."+prefix+"{" + body +  "}", { encoding: 'utf8' });
-        help.themeColorPrefix();
+        return body;
     });
 }
 
