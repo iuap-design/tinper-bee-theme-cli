@@ -240,5 +240,6 @@ async function writeUrlFileSync(url){
 
 module.exports = {
     updateAll,
-    build
+    build,
+    init
 }

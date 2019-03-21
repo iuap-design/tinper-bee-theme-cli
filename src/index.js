@@ -1,5 +1,5 @@
 const help = require('./help');
-const {updateAll,build} = require('./build');
+const {updateAll,build,init} = require('./build');
 const relationComponent = require('./relation-component');
 
 module.exports = {
